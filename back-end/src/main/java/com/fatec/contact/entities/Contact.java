@@ -1,13 +1,25 @@
 package com.fatec.contact.entities;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+
 public class Contact {
 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(length = 40)
     private String name;
+
     private String email;
+
     private String Sex;
+
     private String Choose;
+
     private String phone;
+    
     private String type;
     
     public Integer getId() {
