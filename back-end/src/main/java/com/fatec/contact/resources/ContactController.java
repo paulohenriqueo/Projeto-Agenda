@@ -20,9 +20,7 @@ public class ContactController {
     @GetMapping
     public List<Contact> getContacts(){
 
-        
         return contactService.getContacts();
-
     }
 
 }

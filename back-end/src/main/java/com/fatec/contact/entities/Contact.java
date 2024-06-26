@@ -1,11 +1,17 @@
 package com.fatec.contact.entities;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "TBL_CONTACT")
 public class Contact {
 
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
@@ -14,14 +20,27 @@ public class Contact {
 
     private String email;
 
-    private String Sex;
+    private String sex;
 
-    private String Choose;
+    private String choose;
 
     private String phone;
-    
-    private String type;
-    
+
+    private String speci;
+
+
+    public String getSex() {
+        return sex;
+    }
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+    public String getChoose() {
+        return choose;
+    }
+    public void setChoose(String choose) {
+        this.choose = choose;
+    }
     public Integer getId() {
         return id;
     }
@@ -40,28 +59,18 @@ public class Contact {
     public void setEmail(String email) {
         this.email = email;
     }
-    public String getSex() {
-        return Sex;
-    }
-    public void setSex(String sex) {
-        Sex = sex;
-    }
-    public String getChoose() {
-        return Choose;
-    }
-    public void setChoose(String choose) {
-        Choose = choose;
-    }
+
     public String getPhone() {
         return phone;
     }
     public void setPhone(String phone) {
         this.phone = phone;
     }
-    public String getType() {
-        return type;
+    public String getSpeci() {
+        return speci;
     }
-    public void setType(String type) {
-        this.type = type;
+    public void setSpeci(String speci) {
+        this.speci = speci;
     }
+
 }
