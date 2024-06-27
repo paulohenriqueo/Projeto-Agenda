@@ -47,4 +47,19 @@ public class ContactService {
         }
     }
 
+    public void update(int id, Contact contact){
+        try{
+            Contact aux = contactRepository.getReferenceById(id);
+            aux.setName(contact.getName());
+            aux.setEmail(contact.getEmail());
+            aux.setSex(contact.getSex());
+            aux.setChoose(contact.getChoose());
+            aux.setPhone(contact.getPhone());
+            aux.setSpeci(contact.getSpeci());
+            this.contactRepository.save(aux);
+        } catch (EntityNotFoundException e) {
+            throw new EntityNotFoundException("Contato não encontrado");
+        }
+    }
+
 }
