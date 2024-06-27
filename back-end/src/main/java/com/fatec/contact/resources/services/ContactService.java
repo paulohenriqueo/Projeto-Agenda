@@ -59,7 +59,7 @@ public class ContactService {
             aux.setSpeci(request.speci());
             this.contactRepository.save(aux);
         } catch (EntityNotFoundException e) {
-            throw new EntityNotFoundException("Contato não encontrado");
+            throw new EntityNotFoundException("Contato inexistente no DB");
         }
     }
 
