@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,7 +36,7 @@ public class ContactController {
     }
 
     @PostMapping
-    public Contact saveContact(@RequestBody Contact contact){
+    public Contact saveContact(@Validated @RequestBody Contact contact){
         return this.contactService.save(contact);
     }
 
@@ -45,7 +46,7 @@ public class ContactController {
     }
 
     @PutMapping("{id}")
-    public void update(@PathVariable int id, @RequestBody Contact contact){
+    public void update(@PathVariable int id, @Validated @RequestBody Contact contact){
         this.contactService.update(id, contact);
     }
 }
