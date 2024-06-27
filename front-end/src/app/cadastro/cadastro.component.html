@@ -1,11 +1,14 @@
-<div class="container bg-info p-4 mt-5 rounded-3 border border-black d-flex justify-content-center">
+<div class="container bg-info p-4 mt-5 rounded-3 border border-black d-flex justify-content-center" style="width: 900px; margin: 0 auto;">
     <form class="row g-3">
         <div class="row ms-4 pt-4">
             <div class="col-md-5">
                 <label for="inputName" class="form-label">Nome</label>
-                <input type="name" class="form-control border border-black" id="inputName">
+                <input 
+                type="name" 
+                class="form-control border border-black" 
+                id="inputName">
               </div>
-              <div class="col-md-4">
+              <div class="col-md-5">
                 <label for="inputPassword4" class="form-label">Email</label>
                 <input 
                 type="Email" 
@@ -36,86 +39,33 @@
                 </fieldset>
               </div>
         </div>
-        <div class="row ms-4 pt-2">
-            <div class="col-md-3">
+        <div class="row pt-2 d-flex justify-content-center">
+            <div class="col-md-3 mx-5" >
              <label for="inputPhone" class="form-label">Telefone</label>
              <input 
-             type="Number" 
+             type="text" 
              class="form-control border border-black" 
              id="inputPhone">
-         </div>
-            <div class="col-4">
-                <label for="inputAddress" class="form-label">Endereço</label>
-             <input 
-             type="text" 
-             class="form-control border border-black" 
-             id="inputAddress">
-             </div>
-            <div class="col-4">
-             <label for="inputAddress" class="form-label">Bairro</label>
-             <input 
-             type="text" 
-             class="form-control border border-black" 
-             id="inputAddress">
-             </div>
-             <div class="col-md-5">
-             <label for="inputCity" class="form-label pt-4">Cidade</label>
-             <input 
-             type="text" 
-             class="form-control border border-black" 
-             id="inputCity">
-             </div>
-             <div class="col-md-2">
-             <label for="inputState" class="form-label pt-4">Estado</label>
-             <select id="inputState" class="form-select border border-black">
-                 <option selected>Choose...</option>
-                 <option value="AC">AC</option>
-                 <option value="AL">AL</option>
-                 <option value="AM">AM</option>
-                 <option value="AP">AP</option>
-                 <option value="BA">BA</option>
-                 <option value="CE">CE</option>
-                 <option value="DF">DF</option>
-                 <option value="ES">ES</option>
-                 <option value="GO">GO</option>
-                 <option value="MA">MA</option>
-                 <option value="MG">MG</option>
-                 <option value="MS">MS</option>
-                 <option value="MT">MT</option>
-                 <option value="PA">PA</option>
-                 <option value="PB">PB</option>
-                 <option value="PE">PE</option>
-                 <option value="PI">PI</option>
-                 <option value="PR">PR</option>
-                 <option value="RJ">RJ</option>
-                 <option value="RN">RN</option>
-                 <option value="RO">RO</option>
-                 <option value="RR">RR</option>
-                 <option value="RS">RS</option>
-                 <option value="SC">SC</option>
-                 <option value="SE">SE</option>
-                 <option value="SP">SP</option>
-                 <option value="TO">TO</option> 
-             </select>
-            </div>
-            <div class="col-md-2">
-             <label for="inputZip" class="form-label pt-4">CEP</label>
-              <input 
-              type="text" 
-              class="form-control border border-black" 
-              id="inputZip">
-            </div>
+           </div>
+           <div class="form-check pt-4" style="width: 200px;">
+            <input class="form-check-input" type="checkbox" id="PessoCheck">
+            <label class="form-check-label" for="PessoCheck">
+              Contato Pessoal
+            </label>
         </div>
-        <div class="col-12">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
-                <label class="form-check-label" for="gridCheck">
-             Check me out
-                </label>
-            </div>
+        <div class="form-check pt-4" style="width: 200px;">
+          <input class="form-check-input" type="checkbox" id="ProfCheck">
+          <label class="form-check-label" for="ProfCheck">
+            Contato Profissional
+          </label>
         </div>
-        <div class="col-12">
-            <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+            <button 
+            type="submit" 
+            class="btn btn-primary">
+            Salvar
+          </button>
         </div>
     </form>
   </div>
