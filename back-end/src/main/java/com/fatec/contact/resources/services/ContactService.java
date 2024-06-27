@@ -29,14 +29,18 @@ public class ContactService {
 
     }
 
-    public Contact getContactById(int id){
-        return contactRepository.findById(id).orElseThrow(
+    public ContactResponse getContactById(int id){
+
+        Contact contact = contactRepository.findById(id).orElseThrow(
             () -> new EntityNotFoundException("Contato não encontrado")
         );
+        return ContactMapper.toDTO(contact);
     }
 
-    public Contact save(Contact contact){
-        return this.contactRepository.save(contact);
+    public ContactResponse save(ContactRequest request){
+        Contact contact = ContactMapper.toEntity(request);
+
+        return ContactMapper.toDTO(this.contactRepository.save(contact));
     }
 
     public void deleteContactById(int id){
@@ -58,6 +62,7 @@ public class ContactService {
             aux.setPhone(request.phone());
             aux.setSpeci(request.speci());
             this.contactRepository.save(aux);
+
         } catch (EntityNotFoundException e) {
             throw new EntityNotFoundException("Contato inexistente no DB");
         }
