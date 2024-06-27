@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fatec.contact.dto.ContactRequest;
 import com.fatec.contact.dto.ContactResponse;
 import com.fatec.contact.entities.Contact;
 import com.fatec.contact.mappers.ContactMapper;
@@ -47,15 +48,15 @@ public class ContactService {
         }
     }
 
-    public void update(int id, Contact contact){
+    public void update(int id, ContactRequest request){
         try{
             Contact aux = contactRepository.getReferenceById(id);
-            aux.setName(contact.getName());
-            aux.setEmail(contact.getEmail());
-            aux.setSex(contact.getSex());
-            aux.setChoose(contact.getChoose());
-            aux.setPhone(contact.getPhone());
-            aux.setSpeci(contact.getSpeci());
+            aux.setName(request.name());
+            aux.setEmail(request.email());
+            aux.setSex(request.sex());
+            aux.setChoose(request.choose());
+            aux.setPhone(request.phone());
+            aux.setSpeci(request.speci());
             this.contactRepository.save(aux);
         } catch (EntityNotFoundException e) {
             throw new EntityNotFoundException("Contato não encontrado");

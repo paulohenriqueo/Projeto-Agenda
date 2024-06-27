@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fatec.contact.dto.ContactRequest;
 import com.fatec.contact.dto.ContactResponse;
 import com.fatec.contact.entities.Contact;
 import com.fatec.contact.resources.services.ContactService;
@@ -46,7 +47,8 @@ public class ContactController {
     }
 
     @PutMapping("{id}")
-    public void update(@PathVariable int id, @Validated @RequestBody Contact contact){
+    public ResponseEntity<Void> update(@PathVariable int id, @Validated @RequestBody ContactRequest contact){
         this.contactService.update(id, contact);
+        return ResponseEntity.ok().build();
     }
 }
