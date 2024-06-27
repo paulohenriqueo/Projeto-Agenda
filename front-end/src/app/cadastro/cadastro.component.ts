@@ -10,6 +10,7 @@ import { Contact} from '../contact';
 })
 export class CadastroComponent implements OnInit {
 
+
   contacts: Contact[] = [];
   formGroupContact : FormGroup;
 
@@ -41,4 +42,9 @@ export class CadastroComponent implements OnInit {
       next : data => this.contacts.push(data)
     })
   }
+  delete(contact : Contact) {
+    this.service.delete(contact).subscribe({
+      next : () => this.loadContacts()
+    })
+    }
 }

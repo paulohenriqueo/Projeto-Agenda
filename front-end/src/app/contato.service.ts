@@ -20,4 +20,8 @@ export class ContatoService {
     return this.http.post<Contact>(this.url, contact);
   }
 
+  delete(contact: Contact): Observable<void>{
+    return this.http.delete<void>(`${this.url}/${contact.id}`)
+  }
+
 }
