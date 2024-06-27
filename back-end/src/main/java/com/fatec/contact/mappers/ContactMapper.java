@@ -7,6 +7,7 @@ import com.fatec.contact.entities.Contact;
 public class ContactMapper {
     
     public static Contact toEntity(ContactRequest request){
+        
         Contact contact = new Contact();
         contact.setName(request.name());
         contact.setEmail(request.email());
