@@ -34,4 +34,8 @@ public class ContactService {
         );
     }
 
+    public Contact save(Contact contact){
+        return this.contactRepository.save(contact);
+    }
+
 }
