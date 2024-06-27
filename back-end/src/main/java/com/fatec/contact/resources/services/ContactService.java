@@ -11,6 +11,8 @@ import com.fatec.contact.entities.Contact;
 import com.fatec.contact.mappers.ContactMapper;
 import com.fatec.contact.repositories.ContactRepository;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class ContactService {
     
@@ -20,10 +22,16 @@ public class ContactService {
     public List<ContactResponse> getContacts(){
 
         List <Contact> contacts = contactRepository.findAll();
-        
+
         return contacts.stream().map(c -> ContactMapper.toDTO(c))
                                 .collect(Collectors.toList());
 
+    }
+
+    public Contact getContactById(int id){
+        return contactRepository.findById(id).orElseThrow(
+            () -> new EntityNotFoundException("Contato não encontrado")
+        );
     }
 
 }
