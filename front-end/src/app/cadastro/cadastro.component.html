@@ -26,6 +26,7 @@
                 type="radio" 
                 name="sexo" 
                 id="isxmas"
+                value="Masculino"
                 formControlName="sex"> 
                 <label for="isxmas">
                   Masculino </label>
@@ -33,15 +34,16 @@
                 type="radio" 
                 name="sexo" 
                 id="isxfem" 
+                value="Feminino"
                 formControlName="sex"
                 class="ms-4"> 
                 <label for="isxfem">
                   Feminino </label>
                   <select name="selectsx" id="isexo" class="ms-4 border border-black" formControlName="choose">
                     <option selected>Choose...</option>
-                    <option value="null"></option>
+                    <option value=""></option>
                     <option value="trans">Trans</option>
-                    <option value="inclusivo">Prefiro não dizer</option>
+                    <option value="Preferio não dizer">Prefiro não dizer</option>
                   </select>
               </fieldset>
             </div>
@@ -95,7 +97,7 @@
     <div class="card-body mb-2">
       <br>
       <div *ngFor="let contact of contacts" class="row border border-black p-3 my-1 mx-4 rounded-3 bg-info-subtle">
-        <h5 class="card-title">{{contact.id}} {{contact.name}}</h5>
+        <h5 class="card-title">#{{contact.id}} {{contact.name}}</h5>
         <div class="row d-flex justify-content-around">
           <div class="col-4 text-start">
             <p class="card-text d-inline">Email: {{contact.email}}</p>
@@ -114,14 +116,9 @@
           <div class="col-3 text-start">
             <p class="card-text d-inline">Tipo de Contato: {{contact.speci}}</p>
           </div>
-          <div *ngFor="let contact of contacts" class="d-flex justify-content-evenly mt-3">
+          <div class="d-flex justify-content-evenly mt-3">
             <button type="button" class="btn btn-outline-secondary">Editar</button>
-
-            <button 
-            type="button" 
-            class="btn btn-outline-secondary"
-            (click)="delete(contact)">
-            Remover</button>
+            <button type="button" class="btn btn-outline-secondary"(click)="delete(contact)">Remover</button>
           </div>
         </div>
       </div>
