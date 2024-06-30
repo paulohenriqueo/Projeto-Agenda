@@ -24,4 +24,8 @@ export class ContatoService {
     return this.http.delete<void>(`${this.url}/${contact.id}`)
   }
 
+  update(contact : Contact): Observable<Contact>{
+    return this.http.put<Contact>(`${this.url}/${contact.id}`,contact);
+  }
+
 }

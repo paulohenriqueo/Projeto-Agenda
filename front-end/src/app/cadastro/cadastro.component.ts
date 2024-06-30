@@ -13,6 +13,7 @@ export class CadastroComponent implements OnInit {
 
   contacts: Contact[] = [];
   formGroupContact : FormGroup;
+  isEditing: boolean = false;
 
   constructor(private formBuilder : FormBuilder,
               private service : ContatoService){
@@ -23,7 +24,7 @@ export class CadastroComponent implements OnInit {
                   sex : [''],
                   choose : [''],
                   phone : [''],
-                  speci : [''],
+                  speci : [false],
                 })
               }
   
@@ -38,13 +39,28 @@ export class CadastroComponent implements OnInit {
   }
 
   save(){
-    this.service.save(this.formGroupContact.value).subscribe({
-      next : data => this.contacts.push(data)
-    })
+    if (this.isEditing) {
+      this.service.update(this.formGroupContact.value).subscribe({
+        next : () => {
+          this.loadContacts();
+          this.isEditing = false;
+        }
+      })
+    }
+    else{
+      this.service.save(this.formGroupContact.value).subscribe({
+        next : (data: Contact) => this.contacts.push(data)
+      });
+    }
+    this.formGroupContact.reset();
   }
   delete(contact : Contact) {
     this.service.delete(contact).subscribe({
       next : () => this.loadContacts()
     })
     }
+   edit(contact : Contact){
+    this.formGroupContact.setValue(contact);
+    this.isEditing = true;
+   } 
 }

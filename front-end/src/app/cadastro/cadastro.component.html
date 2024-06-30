@@ -58,16 +58,6 @@
            formControlName="phone">
          </div>
          <div class="col-4">
-          <div class="form-check pt-4" style="width: 200px;">
-            <input 
-            class="form-check-input border border-black" 
-            type="checkbox" 
-            id="PessoCheck"
-            formControlName="speci">
-            <label class="form-check-label" for="PessoCheck">
-              Contato Pessoal
-            </label>
-        </div>
         <div class="form-check" style="width: 200px;">
           <input 
           class="form-check-input border border-black" 
@@ -117,7 +107,7 @@
             <p class="card-text d-inline">Tipo de Contato: {{contact.speci}}</p>
           </div>
           <div class="d-flex justify-content-evenly mt-3">
-            <button type="button" class="btn btn-outline-secondary">Editar</button>
+            <button type="button" class="btn btn-outline-secondary" (click)="edit(contact)">Editar</button>
             <button type="button" class="btn btn-outline-secondary"(click)="delete(contact)">Remover</button>
           </div>
         </div>
