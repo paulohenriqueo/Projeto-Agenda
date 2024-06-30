@@ -1,119 +1,165 @@
-<div class="container bg-info p-4 mt-5 rounded-3 border border-black d-flex justify-content-center" style="width: 900px; margin: 0 auto;">
+<div
+  class="container bg-info p-4 mt-5 rounded-3 border border-black d-flex justify-content-center"
+  style="width: 900px; margin: 0 auto"
+>
   <div class="row m-auto">
     <h1 class="text-center mt-3">Cadastro</h1>
     <form [formGroup]="formGroupContact" class="row g-3">
       <div class="row ms-4 pt-4">
-          <div class="col-md-5">
-              <label for="inputName" class="form-label">Nome</label>
-              <input 
-              type="name" 
-              class="form-control border border-black" 
-              id="inputName"
-              formControlName="name">
-            </div>
-            <div class="col-md-5">
-              <label for="inputPassword4" class="form-label">Email</label>
-              <input 
-              type="Email" 
-              class="form-control border border-black" 
-              id="inputEmail"
-              formControlName="email">
-            </div>
-            <div class="col-12 pb-4 pt-3">
-              <fieldset>
-                <legend>Sexo</legend>
-                <input 
-                type="radio" 
-                name="sexo" 
-                id="isxmas"
-                value="Masculino"
-                formControlName="sex"> 
-                <label for="isxmas">
-                  Masculino </label>
-                <input 
-                type="radio" 
-                name="sexo" 
-                id="isxfem" 
-                value="Feminino"
-                formControlName="sex"
-                class="ms-4"> 
-                <label for="isxfem">
-                  Feminino </label>
-                  <select name="selectsx" id="isexo" class="ms-4 border border-black" formControlName="choose">
-                    <option selected>Choose...</option>
-                    <option value=""></option>
-                    <option value="trans">Trans</option>
-                    <option value="Preferio não dizer">Prefiro não dizer</option>
-                  </select>
-              </fieldset>
-            </div>
+        <div class="col-md-5">
+          <label for="inputName" class="form-label">Nome</label>
+          <input
+            type="name"
+            class="form-control border border-black"
+            id="inputName"
+            formControlName="name"
+          />
+          <small
+            *ngIf="submited && name.hasError('minlength')"
+            class="text-danger"
+          >
+            *O nome tem que ter no mínimo 3 caracteres!!
+          </small>
+          <small
+            *ngIf="submited && name.hasError('required')"
+            class="text-danger"
+          >
+            *O nome é requerido!!
+          </small>
+        </div>
+        <div class="col-md-5">
+          <label for="inputPassword4" class="form-label">Email</label>
+          <input
+            type="Email"
+            class="form-control border border-black"
+            id="inputEmail"
+            formControlName="email"
+          />
+          <small
+            *ngIf="submited && email.hasError('required')"
+            class="text-danger"
+          >
+            *O Email é requerido!!
+          </small>
+        </div>
+        <div class="col-12 pb-4 pt-3">
+          <fieldset>
+            <legend>Sexo</legend>
+            <input
+              type="radio"
+              name="sexo"
+              id="isxmas"
+              value="Masculino"
+              formControlName="sex"
+            />
+            <label for="isxmas"> Masculino </label>
+            <input
+              type="radio"
+              name="sexo"
+              id="isxfem"
+              value="Feminino"
+              formControlName="sex"
+              class="ms-4"
+            />
+            <label for="isxfem"> Feminino </label>
+            <select
+              name="selectsx"
+              id="isexo"
+              class="ms-4 border border-black"
+              formControlName="choose"
+            >
+              <option selected>Choose...</option>
+              <option value=""></option>
+              <option value="trans">Trans</option>
+              <option value="Preferio não dizer">Prefiro não dizer</option>
+            </select>
+          </fieldset>
+        </div>
       </div>
       <div class="row pt-2 d-flex justify-content-center">
-          <div class="col-md-3 mx-5" >
-           <label for="inputPhone" class="form-label">Telefone</label>
-           <input 
-           type="text" 
-           class="form-control border border-black" 
-           id="inputPhone"
-           formControlName="phone">
-         </div>
-         <div class="col-4">
-        <div class="form-check" style="width: 200px;">
-          <input 
-          class="form-check-input border border-black" 
-          type="checkbox" 
-          id="ProfCheck"
-          formControlName="speci">
-          <label class="form-check-label" for="ProfCheck">
-            Contato Profissional
-          </label>
+        <div class="col-md-3 mx-5">
+          <label for="inputPhone" class="form-label">Telefone</label>
+          <input
+            type="text"
+            class="form-control border border-black"
+            id="inputPhone"
+            formControlName="phone"
+          />
         </div>
-         </div>
-         <div class="col-3 pt-4">
-          <button 
-          type="submit" 
-          class="btn btn-primary  border border-black"
-          (click)="save()">
-          Salvar
-        </button>
-      </div>
-      </div>
-
-  </form>
-
-  <h1 class="text-center mt-3">Agenda</h1>
-
-  <div class="card text-center bg-info">
-    <div class="card-body mb-2">
-      <br>
-      <div *ngFor="let contact of contacts" class="row border border-black p-3 my-1 mx-4 rounded-3 bg-info-subtle">
-        <h5 class="card-title">#{{contact.id}} {{contact.name}}</h5>
-        <div class="row d-flex justify-content-around">
-          <div class="col-4 text-start">
-            <p class="card-text d-inline">Email: {{contact.email}}</p>
-          </div>
-          <div class="col-4 text-start">
-            <p class="card-text d-inline">Sexo: {{contact.sex}}</p>
-          </div>
-          <div class="col-4 text-start">
-            <p class="card-text d-inline">Outros: {{contact.choose}}</p>
+        <div class="col-4">
+          <div class="form-check" style="width: 200px">
+            <input
+              class="form-check-input border border-black"
+              type="checkbox"
+              id="ProfCheck"
+              formControlName="speci"
+            />
+            <label class="form-check-label" for="ProfCheck">
+              Contato Profissional
+            </label>
           </div>
         </div>
-        <div class="row d-flex justify-content-around mt-4">
-          <div class="col-2 text-start">
-            <p class="card-text d-inline">Telefone: {{contact.phone}}</p>
+        <div class="col-3 pt-4">
+          <button
+            type="submit"
+            class="btn btn-primary border border-black"
+            (click)="save()"
+          >
+            Salvar
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <h1 class="text-center mt-3">Agenda</h1>
+
+    <div class="card text-center bg-info">
+      <div class="card-body mb-2">
+        <br />
+        <div
+          *ngFor="let contact of contacts"
+          class="row border border-black p-3 my-1 mx-4 rounded-3 bg-info-subtle"
+        >
+          <h5 class="card-title">#{{ contact.id }} {{ contact.name }}</h5>
+          <div class="row d-flex justify-content-around">
+            <div class="col-4 text-start">
+              <p class="card-text d-inline">Email: {{ contact.email }}</p>
+            </div>
+            <div class="col-4 text-start">
+              <p class="card-text d-inline">Sexo: {{ contact.sex }}</p>
+            </div>
+            <div class="col-4 text-start">
+              <p class="card-text d-inline">Outros: {{ contact.choose }}</p>
+            </div>
           </div>
-          <div class="col-3 text-start">
-            <p class="card-text d-inline">Tipo de Contato: {{contact.speci}}</p>
-          </div>
-          <div class="d-flex justify-content-evenly mt-3">
-            <button type="button" class="btn btn-outline-secondary" (click)="edit(contact)">Editar</button>
-            <button type="button" class="btn btn-outline-secondary"(click)="delete(contact)">Remover</button>
+          <div class="row d-flex justify-content-around mt-4">
+            <div class="col-2 text-start">
+              <p class="card-text d-inline">Telefone: {{ contact.phone }}</p>
+            </div>
+            <div class="col-3 text-start">
+              <p class="card-text d-inline">
+                Tipo de Contato: {{ contact.speci }}
+              </p>
+            </div>
+            <div class="d-flex justify-content-evenly mt-3">
+              <button
+                type="button"
+                class="btn btn-outline-secondary"
+                (click)="edit(contact)"
+              >
+                Editar
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-secondary"
+                (click)="delete(contact)"
+              >
+                Remover
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  </div>
-  </div>
-  
+</div>
