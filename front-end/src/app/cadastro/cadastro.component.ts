@@ -35,7 +35,7 @@ export class CadastroComponent implements OnInit {
 
   loadContacts() {
     this.service.getContacts().subscribe({
-      next: (data) => (this.contacts = data),
+      next: data => this.contacts = data
     });
   }
 
@@ -48,6 +48,8 @@ export class CadastroComponent implements OnInit {
           next: () => {
             this.loadContacts();
             this.isEditing = false;
+            this.submited = false;
+            this.formGroupContact.reset();
           },
         });
       } else {
@@ -63,12 +65,11 @@ export class CadastroComponent implements OnInit {
           next: (data) => {
             this.contacts.push(data);
             this.submited = false;
+            this.formGroupContact.reset();
           },
         });
       }
     }
-
-    this.formGroupContact.reset();
   }
   delete(contact: Contact) {
     this.service.delete(contact).subscribe({
