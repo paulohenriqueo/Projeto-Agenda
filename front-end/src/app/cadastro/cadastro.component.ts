@@ -25,7 +25,7 @@ export class CadastroComponent implements OnInit {
       sex: [''],
       choose: [''],
       phone: ['', [Validators.required, Validators.minLength(10)]],
-      speci: ['Contato Pessoal'],
+      speci: [false],
     });
   }
 
@@ -41,6 +41,7 @@ export class CadastroComponent implements OnInit {
 
   save() {
     this.submited = true;
+
     if (this.formGroupContact.valid) {
       if (this.isEditing) {
         this.service.update(this.formGroupContact.value).subscribe({
@@ -50,6 +51,14 @@ export class CadastroComponent implements OnInit {
           },
         });
       } else {
+
+        if (this.formGroupContact.value.speci == true) {
+          this.formGroupContact.patchValue({ speci : 'Profissional' })
+        }
+        else{
+          this.formGroupContact.patchValue({ speci : 'Pessoal' })
+        }
+
         this.service.save(this.formGroupContact.value).subscribe({
           next: (data) => {
             this.contacts.push(data);
