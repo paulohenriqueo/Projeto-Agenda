@@ -84,6 +84,10 @@
             id="inputPhone"
             formControlName="phone"
           />
+          <small  *ngIf="submited && phone.hasError('required')"
+          class="text-danger">
+          *O Número é requerido!!
+          </small>
         </div>
         <div class="col-4">
           <div class="form-check" style="width: 200px">
