@@ -2,15 +2,16 @@ package com.fatec.contact.resources.exceptions;
 
 import java.time.Instant;
 
-import org.springframework.boot.context.properties.bind.validation.ValidationErrors;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 
+@ControllerAdvice
 public class ResourceExceptionHandle {
 
      @ExceptionHandler(EntityNotFoundException.class)
@@ -29,13 +30,13 @@ public class ResourceExceptionHandle {
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<StandardError> validationException(
+    public ResponseEntity<ValidationErros> validationException(
         MethodArgumentNotValidException exception,
         HttpServletRequest request
     ){
-        StandardError error = new ValidationErros();
+        ValidationErros error = new ValidationErros();
         error.setStatus(HttpStatus.UNPROCESSABLE_ENTITY.value());
-        error.setError("Resource Not Found")
+        error.addError("Resource Not Found");
         error.setMessage(exception.getMessage());
         error.setTimeStamp(Instant.now());
         error.setPath(request.getRequestURI());

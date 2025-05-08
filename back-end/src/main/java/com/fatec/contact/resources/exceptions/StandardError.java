@@ -10,13 +10,14 @@ public class StandardError {
     private String message;
     private String path;
 
+    public void setPath(String path) {
+        this.path = path;
+    }
 
     public String getPath() {
         return path;
     }
-    public void setPath(String path) {
-        this.path = path;
-    }
+
     public Instant getTimeStamp() {
         return timeStamp;
     }
